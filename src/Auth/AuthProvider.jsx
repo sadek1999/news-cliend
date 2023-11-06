@@ -1,17 +1,23 @@
 import { createContext, useEffect, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "../firbase/firebase.confige";
-import Login from './../Pages/Login/Login';
+
 
 
  export const AuthContext=createContext()
  const auht=getAuth(app)
 
 const AuthProvider = ({children}) => {
+    const[profile,setprofile]=useState(null)
     const [user,setuser]=useState(null)
     const[loding,setLoding]=useState(true)
+    const provider = new GoogleAuthProvider();
+  
 
-    const singup=(email,password)=>{
+    const googlelogin=()=>{
+        return signInWithPopup(auht,provider)
+    }
+    const singup=(email,password,profile)=>{
         return createUserWithEmailAndPassword(auht,email,password)
     }
     const login=(email,password)=>{
@@ -32,10 +38,12 @@ const AuthProvider = ({children}) => {
 
     const info ={
         user,
+        profile,
         loding,
         singup,
         login,
-        logout
+        logout,
+        googlelogin
 
     }
     return (

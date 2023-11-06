@@ -6,7 +6,7 @@ import axios from "axios";
 
 const Singup = () => {
 
-    const {singup}=useContext(AuthContext)
+    const {singup,googlelogin}=useContext(AuthContext)
 
     const handlsingup=e=>{
         e.preventDefault();
@@ -16,11 +16,12 @@ const Singup = () => {
         const name=form.name.value;
         const img=form.img.value;
         console.log(email,password,img,name)
+        const profile={name,img}
         const user={email,img,name}
-        singup(email,password)
+        singup(email,password,profile)
         .then(res=>{
             console.log(res)
-            axios.post(`http://localhost:5001/singup`,user)
+            axios.post(`http://localhost:5001/user`,user)
             .then(res=>{
                 console.log(res.data)
             })
@@ -28,22 +29,23 @@ const Singup = () => {
                 console.log(error)
             })
 
-            // fetch(`http://localhost:5001/singup`,{
-            //     method:"POST",
-            //     headers:{
-            //         'content-type':'application/json'
-            //     },
-            //     body:JSON.stringify(user)
-            // })
-            // .then(res=>res.json())
-            // .then(data=>{
-            //     console.log(data)
-            // })
+            
         })
         .catch(error=>{
             console.log(error)
         })
         
+    }
+
+    const handlgoogle=(e)=>{
+        e.preventDefault()
+        googlelogin()
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(error=>{
+            console.log(error)
+        })
     }
     
     return (
@@ -83,6 +85,8 @@ const Singup = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <input type="submit" className="btn btn-primary" value="Login" />
+
+                                <button onClick={handlgoogle} className="mb-4 btn btn-success text-white w-full"><BsGoogle></BsGoogle> Google</button>
                                
                             </div>
                         </form>
