@@ -1,9 +1,14 @@
+import Banner from "../homeComponent/Banner";
+import Footer from "../homeComponent/Footer";
+import Recent from "../homeComponent/Recent";
 
 
 const Home = () => {
     return (
         <div>
-            <h1 className="text-xl">This is home pages........</h1>
+            <Banner></Banner>
+            <Recent></Recent>
+            <Footer></Footer>
         </div>
     );
 };

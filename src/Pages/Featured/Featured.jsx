@@ -3,7 +3,7 @@
 const Featured = () => {
     return (
         <div>
-            
+           
         </div>
     );
 };

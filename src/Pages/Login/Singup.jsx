@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Auth/AuthProvider";
 import axios from "axios";
+import { BsGoogle } from "react-icons/bs";
 
 
 const Singup = () => {
@@ -50,10 +51,10 @@ const Singup = () => {
     
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col ">
+            <div className="min-h-screen hero bg-base-200">
+                <div className="flex-col hero-content ">
                    
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="flex-shrink-0 w-full max-w-sm shadow-2xl card bg-base-100">
                         <form onSubmit={handlsingup} className="card-body">
                         <h1 className="text-5xl font-bold">Sing up </h1>
                             <div className="form-control">
@@ -83,14 +84,14 @@ const Singup = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            <div className="form-control mt-6">
+                            <div className="mt-6 form-control">
                                 <input type="submit" className="btn btn-primary" value="Login" />
 
-                                <button onClick={handlgoogle} className="mb-4 btn btn-success text-white w-full"><BsGoogle></BsGoogle> Google</button>
+                                <button onClick={handlgoogle} className="w-full mb-4 text-white btn btn-success"><BsGoogle></BsGoogle> Google</button>
                                
                             </div>
                         </form>
-                        <h1 className="my-2 ">Have acount? <Link className=" " to={'/login'}>Long in</Link></h1>
+                        <h1 className="my-2 ">Have acount? <Link className="" to={'/login'}>Long in</Link></h1>
                     </div>
                 </div>
             </div>
