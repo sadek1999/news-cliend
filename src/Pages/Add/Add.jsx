@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Auth/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
 const Add = () => {
     const { user } = useContext(AuthContext)
-    const [type,settype]=useState(null)
+    const [type, settype] = useState(null)
 
     const handltype = e => {
         e.preventDefault()
@@ -24,19 +26,34 @@ const Add = () => {
         const title = form.title.value;
         const img = form.img.value;
         const date = form.date.value;
-        
+
 
         const autorEmail = user.email;
         const autorimg = user?.img;
-        const name =user?.name;
+        const name = user?.name;
 
         const news = { sd, ld, name, title, img, date, type, autorEmail, autorimg }
         console.log(news)
 
-        // axios.post(`http://localhost:5001/post`, news)
-        //     .then(res => {
-        //         console.log(res.data)
-        //     })
+        axios.post(`http://localhost:5001/post`, news)
+            .then(res => {
+                console.log(res.data)
+                if(res.data.acknowledged){
+                    
+                    toast.success('🦄 Wow so easy!', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
+                    
+                }
+                
+            })
 
 
 
@@ -49,7 +66,7 @@ const Add = () => {
 
     return (
         <div>
-            <div className="min-h-screen hero bg-base-200">
+            <div className="min-h-screen hero bg-base-200 ">
                 <div className="flex-col hero-content ">
 
                     <div className="flex-shrink-0 w-full shadow-2xl card bg-base-100">
@@ -72,11 +89,11 @@ const Add = () => {
                             </div>
                             {/* row --2 */}
                             <div className="flex flex-col gap-5 lg:flex-row">
-                            <div className="form-control">
+                                <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">News type</span>
                                     </label>
-                                   
+
                                     <select onChange={handltype} className="select select-bordered w-full max-w-xs">
                                         <option disabled selected>Who shot first?</option>
                                         <option >Business</option>
@@ -93,7 +110,7 @@ const Add = () => {
                                     <input type="date" name="date" className="input input-bordered" required />
                                 </div>
                             </div>
-                           
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Short Description</span>
@@ -118,7 +135,23 @@ const Add = () => {
 
                     </div>
                 </div>
+               
             </div>
+
+            <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
+                {/* Same as */}
+                <ToastContainer />
         </div>
     );
 };
