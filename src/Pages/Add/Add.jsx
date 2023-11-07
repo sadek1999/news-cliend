@@ -3,12 +3,20 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Auth/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 
 const Add = () => {
     const { user } = useContext(AuthContext)
     const [type, settype] = useState(null)
+    const [currentDate, setCurrentDate] = useState(new Date());
+    console.log(currentDate)
+
+    const handldate=()=>{
+        setCurrentDate(date)
+    }
 
     const handltype = e => {
         e.preventDefault()
@@ -137,6 +145,12 @@ const Add = () => {
                 </div>
                
             </div>
+            <DatePicker 
+            selected={currentDate}
+            onChange={handldate}
+            dateFormat="dd-MM-yy"
+        showTimeSelect={false}
+        ></DatePicker>
 
             <ToastContainer
                     position="top-right"
