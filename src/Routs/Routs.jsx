@@ -8,6 +8,7 @@ import Wishlist from "../Pages/Wishlist/Wishlist";
 import Login from "../Pages/Login/Login";
 import Singup from "../Pages/Login/Singup";
 import Details from "../Pages/Home/homeComponent/Details";
+import Typenews from "../Pages/Home/homeComponent/Banner/Typenews";
 
 const router = createBrowserRouter([
     {
@@ -41,8 +42,13 @@ const router = createBrowserRouter([
         },{
             path:'/details/:id',
             element:<Details></Details>,
-            loader:(params)=>fetch(`http://localhost:5001/news/${params.id}`)
+            loader:({params})=>fetch(`http://localhost:5001/news/${params.id}`)
             
+        },{
+            path:'/news/:type',
+            element:<Typenews></Typenews>,
+            
+            loader:({params})=>fetch(`http://localhost:5001/news?type=${params.type}`)
         }
 
       ]

@@ -1,6 +1,7 @@
 
 
 import Banner from "../homeComponent/Banner/Banner";
+import Type from "../homeComponent/Banner/type";
 import Footer from "../homeComponent/Footer";
 import Recent from "../homeComponent/Recent";
 
@@ -14,7 +15,9 @@ const Home = () => {
                 <div className="col-span-4 border">
                 <Recent></Recent>
                 </div>
-                <div className="col-span-2 bg-blue-500 h-96"></div>
+                <div className="col-span-2  ">
+                    <Type></Type>
+                </div>
             </div>
             
             <Footer></Footer>

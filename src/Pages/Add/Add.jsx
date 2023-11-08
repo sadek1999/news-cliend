@@ -37,11 +37,11 @@ const Add = () => {
         const date = form.date.value;
 
 
-        const autorEmail = user.email;
+        const email = user.email;
         const autorimg = user?.img;
         const name = user?.name;
 
-        const news = { sd, ld, name, title, img, date, type, autorEmail, autorimg }
+        const news = { sd, ld, name, title, img, date, type, email, autorimg }
         console.log(news)
 
         axios.post(`http://localhost:5001/post`, news)

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const Banner = () => {
@@ -36,7 +37,8 @@ const Banner = () => {
                                 <h2 className='text-xl  md:text-4xl font-bold'>{news1.title}</h2>
                                 <p>{news1.sd}</p>
                                 <div className=''>
-                                <button className="btn btn-outline btn-error">Details</button>
+                                    <Link to={`/details/${news1._id}`} className="btn btn-outline btn-error">Details</Link>
+                                
 
                                 </div>
 
@@ -56,7 +58,7 @@ const Banner = () => {
                                    
                                     <div className=''>
                                         
-                                        <button className="btn btn-outline btn-error">Details</button>
+                                    <Link to={`/details/${news2._id}`} className="btn btn-outline btn-error">Details</Link>
                                     </div>
                                 </div>
 
@@ -73,24 +75,23 @@ const Banner = () => {
                                 <h2 className='text-2xl font-bold'>{news3.title}</h2>
                                     <div className=''>
                                        
-                                    <button className="btn btn-outline btn-error">Latest Projects</button>
-                                    </div>
-
+                                    <Link to={`/details/${news3._id}`} className="btn btn-outline btn-error">Details</Link>
 
                                 </div>
                             </div>
                         </div>
 
-                    </div> </div>: <div></div>
-                            };
+                    </div> </div> </div>: <div></div>
+                            }
                
                </div>    
+                  
                     
                   
 
 
            );
-};
+}
 
 
 
