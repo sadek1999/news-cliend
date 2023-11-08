@@ -8,13 +8,13 @@ const Recent = () => {
     useEffect(() => {
         axios.get(`http://localhost:5001/getnews`)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 // console.log(res.data[0].name)
                 setNews(res.data)
             })
     }, [])
     // const{sd,ld,name,title,img,date,type,autorEmail,autorimg}=news;
-    console.log(news)
+    // console.log(news)
 
     return (
         <div>
