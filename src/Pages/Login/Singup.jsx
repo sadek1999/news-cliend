@@ -85,7 +85,7 @@ const Singup = () => {
                                 </label>
                             </div>
                             <div className="mt-6 form-control">
-                                <input type="submit" className="btn btn-primary" value="Login" />
+                                <input type="submit" className="btn btn-primary" value="sing up" />
 
                                 <button onClick={handlgoogle} className="w-full mb-4 text-white btn btn-success"><BsGoogle></BsGoogle> Google</button>
                                

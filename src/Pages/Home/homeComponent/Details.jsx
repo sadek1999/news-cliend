@@ -11,7 +11,16 @@ const Details = () => {
 
     // console.log(user?.email)
     const { sd, ld, name, title, img, date, type, email, autorimg } = news;
-    const handalComment=e=>{
+
+    const handltype = e => {
+        e.preventDefault()
+        console.log('hi there')
+       
+    }
+
+
+    const handlComment=(e)=>{
+       
         e.preventDefault();
         const form=e.target;
         const comment=form.comment.value;
@@ -29,7 +38,7 @@ const Details = () => {
                         setcuser(res.data)
                         
                     })
-    },[user])
+    },[])
     // console.log(cuser)
     return (
         <div>
@@ -45,9 +54,9 @@ const Details = () => {
 
                     </div>
                     <div >
-                    <form className="flex flex-col gap-2 " action="">
+                    <form onSubmit={handlComment} className="flex flex-col gap-2 " action="">
                     <input type="text" placeholder=" your comment" className="input input-bordered input-lg w-full max-w-xs" name="comment" required />
-                    <input onSubmit={handalComment} type="submit" className="btn-primary btn w-20" value="submit"/>
+                    <input  type="submit" className="btn-primary btn w-20" value="submit"/>
                     </form>
                     </div>
 

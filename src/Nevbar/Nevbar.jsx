@@ -21,11 +21,11 @@ const Nevbar = () => {
         axios.get(`http://localhost:5001/getusers/${user?.email}`)
                     .then(res => {
                         // console.log(res.data)
-                        // console.log(res.data.name,res.data.img)
+                        console.log(res.data.name,res.data.img)
                         setname(res.data.name);
                         setimg(res.data.img)
                     })
-    },[user])
+    },[])
     
 
     useEffect(() => {
