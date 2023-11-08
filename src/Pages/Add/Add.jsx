@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Auth/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import DatePicker from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
 
 
@@ -11,11 +11,12 @@ import "react-datepicker/dist/react-datepicker.css";
 const Add = () => {
     const { user } = useContext(AuthContext)
     const [type, settype] = useState(null)
-    const [currentDate, setCurrentDate] = useState(new Date());
-    console.log(currentDate)
+    const [currentDate, setCurrentDate] = useState(new Date().toISOString().split('T')[0]);
+    
 
-    const handldate=()=>{
-        setCurrentDate(date)
+    const handldate=(e)=>{
+        e.preventDefault()
+        setCurrentDate(e.target.value)
     }
 
     const handltype = e => {
@@ -47,8 +48,9 @@ const Add = () => {
             .then(res => {
                 console.log(res.data)
                 if(res.data.acknowledged){
+                    form.reset();
                     
-                    toast.success('🦄 Wow so easy!', {
+                    toast.success('🦄 successfully add the Blog', {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -115,7 +117,10 @@ const Add = () => {
                                     <label className="label">
                                         <span className="label-text">Date</span>
                                     </label>
-                                    <input type="date" name="date" className="input input-bordered" required />
+                                    <input type="date"
+                                    value={currentDate}
+                                    onChange={handldate}
+                                    name="date" className="input input-bordered" required />
                                 </div>
                             </div>
 
@@ -145,12 +150,7 @@ const Add = () => {
                 </div>
                
             </div>
-            <DatePicker 
-            selected={currentDate}
-            onChange={handldate}
-            dateFormat="dd-MM-yy"
-        showTimeSelect={false}
-        ></DatePicker>
+           
 
             <ToastContainer
                     position="top-right"

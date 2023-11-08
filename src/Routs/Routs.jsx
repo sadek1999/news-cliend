@@ -7,6 +7,7 @@ import Featured from "../Pages/Featured/Featured";
 import Wishlist from "../Pages/Wishlist/Wishlist";
 import Login from "../Pages/Login/Login";
 import Singup from "../Pages/Login/Singup";
+import Details from "../Pages/Home/homeComponent/Details";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
         {
             path:'/singup',
             element:<Singup></Singup>
+        },{
+            path:'/details/:id',
+            element:<Details></Details>,
+            loader:(params)=>fetch(`http://localhost:5001/news/${params.id}`)
+            
         }
 
       ]
