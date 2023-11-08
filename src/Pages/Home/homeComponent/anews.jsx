@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { defineConfig } from 'vite';
+
 
 const Anews = ({ news }) => {
 

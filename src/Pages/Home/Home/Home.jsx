@@ -1,4 +1,6 @@
-import Banner from "../homeComponent/Banner";
+
+
+import Banner from "../homeComponent/Banner/Banner";
 import Footer from "../homeComponent/Footer";
 import Recent from "../homeComponent/Recent";
 
@@ -7,6 +9,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+           
             <div className="grid grid-cols-6">
                 <div className="col-span-4 border">
                 <Recent></Recent>

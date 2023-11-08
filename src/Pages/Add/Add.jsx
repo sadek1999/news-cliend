@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const Add = () => {
     const { user } = useContext(AuthContext)
-    const [type, settype] = useState(null)
+    const [type, settype] = useState('Israel-Gaza war')
     const [currentDate, setCurrentDate] = useState(new Date().toISOString().split('T')[0]);
     
 
@@ -104,7 +104,7 @@ const Add = () => {
                                         <span className="label-text">News type</span>
                                     </label>
 
-                                    <select onChange={handltype} className="select select-bordered w-full max-w-xs">
+                                    <select onChange={handltype} className="w-full max-w-xs select select-bordered">
                                         <option disabled selected>Who shot first?</option>
                                         <option >Business</option>
                                         <option>Politics</option>
