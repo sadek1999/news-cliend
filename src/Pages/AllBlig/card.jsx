@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { AuthContext } from "../../Auth/AuthProvider";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 
 const Card = ({ blog }) => {
@@ -20,16 +20,19 @@ const Card = ({ blog }) => {
         axios.post(`http://localhost:5001/wishlist`, myb)
             .then(res => {
                 console.log(res.data)
-                toast.success(' Added in wishlist', {
-                    position: "top-center",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
+                // if(res.data){
+                //     toast.success(' Added in wishlist', {
+                //         position: "top-center",
+                //         autoClose: 3000,
+                //         hideProgressBar: false,
+                //         closeOnClick: true,
+                //         pauseOnHover: true,
+                //         draggable: true,
+                //         progress: undefined,
+                //         theme: "light",
+                //     });
+                // }
+               
 
             })
 
@@ -51,7 +54,7 @@ const Card = ({ blog }) => {
                 </div>
             </div>
 
-            <ToastContainer
+            {/* <ToastContainer
                 position="top-center"
                 autoClose={5000}
                 hideProgressBar={false}
@@ -62,7 +65,7 @@ const Card = ({ blog }) => {
                 draggable
                 pauseOnHover
                 theme="light"
-            />
+            /> */}
         </div>
 
     );
