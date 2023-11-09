@@ -1,49 +1,55 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Auth/AuthProvider";
 import axios from "axios";
+import Comments from "./Comments";
 
 
 const Details = () => {
     const news = useLoaderData()
-    const {user}=useContext(AuthContext)
-    const[cuser,setcuser]=useState(null)
+    const { user } = useContext(AuthContext)
+    const [cuser, setcuser] = useState(null)
+    const [comments, setcomments] = useState(null)
 
-    // console.log(user?.email)
-    const { sd, ld, name, title, img, date, type, email, autorimg ,_id } = news;
+    console.log(user?.email)
+    const { sd, ld, name, title, img, date, type, email, autorimg, _id } = news;
 
-    const handltype = e => {
-        e.preventDefault()
-        console.log('hi there')
-       
-    }
+    
 
 
-    const handlComment=(e)=>{
-       
+    const handlComment = (e) => {
+
         e.preventDefault();
-        const form=e.target;
-        const newsid=_id;
-        const comment=form.comment.value;
-        const name=cuser?.name;
-        const img=cuser?.img;
-        const cinfo={comment,name,img,newsid}
-        axios.post(`http://localhost:5001/comment`,cinfo)
-        .then(res=>{
-            console.log(res.data)
-        })
-        console.log(cinfo)
+        const form = e.target;
+        const newsid = _id;
+        const comment = form.comment.value;
+        const name = cuser?.name;
+        const img = cuser?.img;
+        const cinfo = { comment, name, img, newsid }
+        axios.post(`http://localhost:5001/comment`, cinfo)
+            .then(res => {
+                console.log(res.data)
+            })
+        // console.log(cinfo)
 
     }
-    useEffect(()=>{
+    useEffect(() => {
         axios.get(`http://localhost:5001/getusers/${user?.email}`)
-                    .then(res => {
-                        // console.log(res.data)
-                        // console.log(res.data.name,res.data.img)
-                        setcuser(res.data)
-                        
-                    })
-    },[user])
+            .then(res => {
+                // console.log(res.data)
+                // console.log(res.data.name,res.data.img)
+                setcuser(res.data)
+
+            })
+    }, [user])
+
+    useEffect(() => {
+        axios.get(`http://localhost:5001/comment?newsid=${_id}`)
+            .then(res => {
+                console.log(res.data)
+                setcomments(res.data)
+            })
+    }, [_id])
     console.log(cuser)
     return (
         <div>
@@ -59,15 +65,31 @@ const Details = () => {
 
                     </div>
                     <div >
-                    <form onSubmit={handlComment} className="flex flex-col gap-2 " action="">
-                    <input type="text" placeholder=" your comment" className="input input-bordered input-lg w-full max-w-xs" name="comment" required />
-                    <input  type="submit" className="btn-primary btn w-20" value="submit"/>
-                    </form>
+                        <form onSubmit={handlComment} className="flex flex-col gap-2 " action="">
+                            <input type="text" placeholder=" your comment" className="input input-bordered input-lg w-full max-w-xs" name="comment" required />
+                            <input type="submit" className="btn-primary btn w-20" value="submit" />
+                        </form>
                     </div>
 
 
-                    <div className="card-actions justify-end">
-                        
+                    <div className=" ">
+                        <h1 className="text-2xl font-bold border-spacing-2 border-gray-300">Comments</h1>
+
+                        <div >
+
+
+                            {
+                                comments ? <div >
+                                    {
+                                        comments.map(acomment => <Comments key={acomment._id} acomment={acomment}></Comments>)
+                                    }
+                                </div> : <div></div>
+                            }
+                        </div>
+
+
+
+
                     </div>
                 </div>
             </div>
