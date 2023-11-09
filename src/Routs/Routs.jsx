@@ -9,6 +9,8 @@ import Login from "../Pages/Login/Login";
 import Singup from "../Pages/Login/Singup";
 import Details from "../Pages/Home/homeComponent/Details";
 import Typenews from "../Pages/Home/homeComponent/Banner/Typenews";
+import PrivateRout from "./PrivateRout";
+import Update from './../Pages/Update/Update';
 
 const router = createBrowserRouter([
     {
@@ -20,7 +22,7 @@ const router = createBrowserRouter([
             element:<Home></Home>
         },{
             path:"/add",
-            element:<Add></Add>
+            element: <PrivateRout><Add></Add></PrivateRout>
         },{
             path:'/all',
             element:<Allblogs></Allblogs>
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
             element:<Featured></Featured>
         },{
             path:'wishlist',
-            element:<Wishlist></Wishlist>
+            element:<PrivateRout><Wishlist></Wishlist></PrivateRout>
 
         },
         {
@@ -44,15 +46,25 @@ const router = createBrowserRouter([
             element:<Details></Details>,
             loader:({params})=>fetch(`http://localhost:5001/news/${params.id}`)
             
-        },{
+        }
+        
+        
+        ,{
             path:'/news/:type',
             element:<Typenews></Typenews>,
             
             loader:({params})=>fetch(`http://localhost:5001/news?type=${params.type}`)
         }
 
-      ]
+      ],
+      
     },
+    {
+        path:'/update/:id',
+        element:<Update></Update>,
+        loader:({params})=>fetch(`http://localhost:5001/news/${params.id}`)
+        
+    }
   ]);
 
 

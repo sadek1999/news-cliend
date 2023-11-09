@@ -12,7 +12,7 @@ const Banner = () => {
     useEffect(() => {
         axios.get(`http://localhost:5001/news?type=Israel-Gaza%20war`)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 setnews(res.data);
                 setnews1(res.data[0])
                 setnews2(res.data[1])
@@ -23,7 +23,7 @@ const Banner = () => {
     }, [])
 
     // const {img1,title1,type2}=news1
-    console.log(news3)
+    // console.log(news3)
     
     return (
         <div>
@@ -33,7 +33,7 @@ const Banner = () => {
                     <div className="relative col-span-3 ">
                         <img src={news1.img} className="h-full rounded-xl" alt="" />
                         <div className="absolute top-0 flex text-left items-end rounded-xl  w-full  h-full gap-4  bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)]  ">
-                            <div className='pl-16 w-5/6 pb-3 space-y-6 text-white '>
+                            <div className='pl-2 md:pl-16 md:w-5/6 pb-3 space-y-6 text-white '>
                                 <h2 className='text-xl  md:text-4xl font-bold'>{news1.title}</h2>
                                 <p>{news1.sd}</p>
                                 <div className=''>
@@ -53,8 +53,8 @@ const Banner = () => {
                         <div className="relative h-1/2">
                             <img className="w-full rounded-xl h-64" src={news2.img} alt="" />
                             <div className="absolute top-0 flex items-center rounded-xl  w-full  h-full gap-4  bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)]  ">
-                                <div className='w-1/2 pl-5 space-y-6 text-white '>
-                                    <h2 className='text-xl md:text-2xl font-bold'>{news2.title}</h2>
+                                <div className=' md:w-1/2 pl-5 space-y-6 text-white '>
+                                    <h2 className=' md:text-2xl font-bold'>{news2.title}</h2>
                                    
                                     <div className=''>
                                         
@@ -70,9 +70,9 @@ const Banner = () => {
                         <div className="relative h-1/2">
                             <img className="w-full rounded-xl h-64" src={news3.img} alt="" />
                             <div className="absolute top-0 flex items-center rounded-xl  w-full  h-full gap-4  bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)]  ">
-                                <div className='w-1/2 pl-5 space-y-6 text-white '>
+                                <div className=' md:w-1/2 pl-5 space-y-6 text-white '>
                                    
-                                <h2 className='text-2xl font-bold'>{news3.title}</h2>
+                                <h2 className=' md:text-2xl font-bold'>{news3.title}</h2>
                                     <div className=''>
                                        
                                     <Link to={`/details/${news3._id}`} className="btn btn-outline btn-error">Details</Link>

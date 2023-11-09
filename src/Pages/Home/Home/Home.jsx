@@ -3,6 +3,7 @@
 import Banner from "../homeComponent/Banner/Banner";
 import Type from "../homeComponent/Banner/type";
 import Footer from "../homeComponent/Footer";
+import Newstitle from "../homeComponent/Newstitle";
 import Recent from "../homeComponent/Recent";
 
 
@@ -11,7 +12,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
            
-            <div className="grid grid-cols-6">
+            <div className="md:grid grid-cols-6">
                 <div className="col-span-4 border">
                 <Recent></Recent>
                 </div>
@@ -19,7 +20,7 @@ const Home = () => {
                     <Type></Type>
                 </div>
             </div>
-            
+            <Newstitle></Newstitle>
             <Footer></Footer>
         </div>
     );

@@ -1,5 +1,5 @@
-import { useContext, useEffect, useReducer, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Auth/AuthProvider";
 import axios from "axios";
 import Comments from "./Comments";
@@ -12,9 +12,10 @@ const Details = () => {
     const [comments, setcomments] = useState(null)
 
     console.log(user?.email)
-    const { sd, ld, name, title, img, date, type, email, autorimg, _id } = news;
+    const {  ld,  title, img,  type, email,  _id } = news;
+    console.log(email)
 
-    
+
 
 
     const handlComment = (e) => {
@@ -64,12 +65,24 @@ const Details = () => {
                         <p>{ld}</p>
 
                     </div>
-                    <div >
-                        <form onSubmit={handlComment} className="flex flex-col gap-2 " action="">
-                            <input type="text" placeholder=" your comment" className="input input-bordered input-lg w-full max-w-xs" name="comment" required />
-                            <input type="submit" className="btn-primary btn w-20" value="submit" />
-                        </form>
+
+                    {/* comment sections */}
+
+                    <div>
+                        {user?.email === email ? <div >
+                            <Link to={`update/${_id}`} className="btn btn-outline btn-success "> Update</Link>
+                        </div> : <div >
+                            <form onSubmit={handlComment} className="flex flex-col gap-2 " action="">
+                                <input type="text" placeholder=" your comment" className="input input-bordered input-lg w-full max-w-xs" name="comment" required />
+                                <input type="submit" className="btn-primary btn w-20" value="submit" />
+                            </form>
+                        </div>
+
+
+                        }
                     </div>
+
+
 
 
                     <div className=" ">
