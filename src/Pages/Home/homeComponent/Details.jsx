@@ -10,7 +10,7 @@ const Details = () => {
     const[cuser,setcuser]=useState(null)
 
     // console.log(user?.email)
-    const { sd, ld, name, title, img, date, type, email, autorimg } = news;
+    const { sd, ld, name, title, img, date, type, email, autorimg ,_id } = news;
 
     const handltype = e => {
         e.preventDefault()
@@ -23,10 +23,15 @@ const Details = () => {
        
         e.preventDefault();
         const form=e.target;
+        const newsid=_id;
         const comment=form.comment.value;
-        const name=user?.name;
-        const img=user?.img;
-        const cinfo={comment,name,img}
+        const name=cuser?.name;
+        const img=cuser?.img;
+        const cinfo={comment,name,img,newsid}
+        axios.post(`http://localhost:5001/comment`,cinfo)
+        .then(res=>{
+            console.log(res.data)
+        })
         console.log(cinfo)
 
     }
@@ -38,8 +43,8 @@ const Details = () => {
                         setcuser(res.data)
                         
                     })
-    },[])
-    // console.log(cuser)
+    },[user])
+    console.log(cuser)
     return (
         <div>
             <div className="card bg-base-100  mx-auto shadow-xl lg:w-4/6">

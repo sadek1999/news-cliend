@@ -25,7 +25,7 @@ const Nevbar = () => {
                         setname(res.data.name);
                         setimg(res.data.img)
                     })
-    },[])
+    },[user])
     
 
     useEffect(() => {
