@@ -20,7 +20,7 @@ const Allblogs = () => {
     
     useEffect(() => {
         if(type){
-            axios.get(`http://localhost:5001/news?type=${type}`)
+            axios.get(`https://news-server-steel.vercel.app/news?type=${type}`)
             .then(res => {
                 // console.log(res.data)
                 // setblogs(res.data)
@@ -35,7 +35,7 @@ const Allblogs = () => {
    
     
     useEffect(() => {
-        axios.get(`http://localhost:5001/news`)
+        axios.get(`https://news-server-steel.vercel.app/news`)
             .then(res => {
                 // console.log(res.data)
                 setblogs(res.data)
@@ -56,6 +56,7 @@ const Allblogs = () => {
                     <option>
                         Israel-Gaza war</option>
                     <option>economy</option>
+                    <option>Sports</option>
                 </select>
             </div>
 

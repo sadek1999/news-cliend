@@ -10,7 +10,7 @@ const Banner = () => {
     const [news3, setnews3] = useState(null)
 
     useEffect(() => {
-        axios.get(`http://localhost:5001/news?type=Israel-Gaza%20war`)
+        axios.get(`https://news-server-steel.vercel.app/news?type=Israel-Gaza%20war`)
             .then(res => {
                 // console.log(res.data)
                 setnews(res.data);

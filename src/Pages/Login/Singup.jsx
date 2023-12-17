@@ -22,7 +22,7 @@ const Singup = () => {
         singup(email,password,profile)
         .then(res=>{
             console.log(res)
-            axios.post(`http://localhost:5001/user`,user)
+            axios.post(`https://news-server-steel.vercel.app/user`,user)
             .then(res=>{
                 console.log(res.data)
             })

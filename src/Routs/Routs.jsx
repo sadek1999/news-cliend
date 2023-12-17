@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         },{
             path:'/details/:id',
             element:<Details></Details>,
-            loader:({params})=>fetch(`http://localhost:5001/news/${params.id}`)
+            loader:({params})=>fetch(`https://news-server-steel.vercel.app/news/${params.id}`)
             
         }
         
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
             path:'/news/:type',
             element:<Typenews></Typenews>,
             
-            loader:({params})=>fetch(`http://localhost:5001/news?type=${params.type}`)
+            loader:({params})=>fetch(`https://news-server-steel.vercel.app/news?type=${params.type}`)
         }
 
       ],
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
     {
         path:'/update/:id',
         element:<Update></Update>,
-        loader:({params})=>fetch(`http://localhost:5001/news/${params.id}`)
+        loader:({params})=>fetch(`https://news-server-steel.vercel.app/news/${params.id}`)
         
     }
   ]);

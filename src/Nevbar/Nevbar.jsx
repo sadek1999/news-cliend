@@ -18,7 +18,7 @@ const Nevbar = () => {
     const[img,setimg]=useState(null)
    
     useEffect(()=>{
-        axios.get(`http://localhost:5001/getusers/${user?.email}`)
+        axios.get(`https://news-server-steel.vercel.app/getusers/${user?.email}`)
                     .then(res => {
                         // console.log(res.data)
                         console.log(res.data.name,res.data.img)

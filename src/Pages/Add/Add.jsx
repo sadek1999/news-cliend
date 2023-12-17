@@ -44,7 +44,7 @@ const Add = () => {
         const news = { sd, ld, name, title, img, date, type, email, autorimg }
         console.log(news)
 
-        axios.post(`http://localhost:5001/post`, news)
+        axios.post(`https://news-server-steel.vercel.app/post`, news)
             .then(res => {
                 console.log(res.data)
                 if(res.data.acknowledged){
@@ -111,6 +111,7 @@ const Add = () => {
                                         <option>
                                             Israel-Gaza war</option>
                                         <option>Economy</option>
+                                        <option>Sports</option>
                                     </select>
                                 </div>
                                 <div className="form-control">

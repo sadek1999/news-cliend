@@ -6,7 +6,7 @@ const Recent = () => {
     const [news, setNews] = useState(null)
    
     useEffect(() => {
-        axios.get(`http://localhost:5001/getnews`)
+        axios.get(`https://news-server-steel.vercel.app/getnews`)
             .then(res => {
                 // console.log(res.data)
                 // console.log(res.data[0].name)

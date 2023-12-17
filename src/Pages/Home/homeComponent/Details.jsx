@@ -27,7 +27,7 @@ const Details = () => {
         const name = cuser?.name;
         const img = cuser?.img;
         const cinfo = { comment, name, img, newsid }
-        axios.post(`http://localhost:5001/comment`, cinfo)
+        axios.post(`https://news-server-steel.vercel.app/comment`, cinfo)
             .then(res => {
                 console.log(res.data)
             })
@@ -35,7 +35,7 @@ const Details = () => {
 
     }
     useEffect(() => {
-        axios.get(`http://localhost:5001/getusers/${user?.email}`)
+        axios.get(`https://news-server-steel.vercel.app/getusers/${user?.email}`)
             .then(res => {
                 // console.log(res.data)
                 // console.log(res.data.name,res.data.img)
@@ -45,7 +45,7 @@ const Details = () => {
     }, [user])
 
     useEffect(() => {
-        axios.get(`http://localhost:5001/comment?newsid=${_id}`)
+        axios.get(`https://news-server-steel.vercel.app/comment?newsid=${_id}`)
             .then(res => {
                 console.log(res.data)
                 setcomments(res.data)

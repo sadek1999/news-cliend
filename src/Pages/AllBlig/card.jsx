@@ -17,7 +17,7 @@ const Card = ({ blog }) => {
     const handllist = (blog) => {
         const myb = { blog, email }
         console.log(myb)
-        axios.post(`http://localhost:5001/wishlist`, myb)
+        axios.post(`https://news-server-steel.vercel.app/wishlist`, myb)
             .then(res => {
                 console.log(res.data)
                 // if(res.data){
@@ -44,8 +44,8 @@ const Card = ({ blog }) => {
         <div className="card  bg-base-100 shadow-xl">
             <figure><img className="h-56" src={img} alt="Shoes" /></figure>
             <div className="card-body">
-                <h2 className="card-title">{type}</h2>
-                <p>{title}</p>
+                <h2 className="card-title">{title}</h2>
+                
                 <div className="card-actions justify-center">
                     <Link to={`/details/${_id}`} className="btn btn-outline btn-success ">Details</Link>
                     <button onClick={() => { handllist(blog) }} className="btn btn-outline btn-success " >Wishlist</button>
